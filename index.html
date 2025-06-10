@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,10 +9,16 @@
       font-family: sans-serif;
       text-align: center;
       padding: 40px;
+      background-color: #f0f0f0;
     }
     .result {
       font-size: 24px;
       margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      background-color: white;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .valid {
       color: green;
@@ -27,14 +33,14 @@
   <div id="productInfo" class="result"></div>
 
   <script>
-    // 샘플 데이터베이스
+    // 샘플 제품 데이터베이스
     const productDB = {
       "12345": { name: "루이비통 가방", isAuthentic: true },
       "54321": { name: "나이키 운동화", isAuthentic: false },
       "20240611": { name: "샘플 시계", isAuthentic: true }
     };
 
-    // URL에서 ID 추출
+    // URL 파라미터에서 id 추출
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get("id");
 
@@ -43,9 +49,9 @@
     if (productId && productDB[productId]) {
       const product = productDB[productId];
       display.innerHTML = `
-        <p>제품명: <strong>${product.name}</strong></p>
+        <p><strong>제품명:</strong> ${product.name}</p>
         <p class="${product.isAuthentic ? "valid" : "invalid"}">
-          ${product.isAuthentic ? "✅ 진품입니다" : "❌ 가품입니다"}
+          ${product.isAuthentic ? "✅ 이 제품은 진품입니다!" : "❌ 이 제품은 진품이 아닙니다."}
         </p>
       `;
     } else {
@@ -54,3 +60,4 @@
   </script>
 </body>
 </html>
+
