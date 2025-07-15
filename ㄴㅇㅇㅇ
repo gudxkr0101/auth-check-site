@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>진품 여부 확인</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+      background-color: #f7f7f7;
+    }
+    .result {
+      font-size: 24px;
+      padding: 20px;
+      border-radius: 12px;
+      background-color: white;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .valid { color: green; }
+    .invalid { color: red; }
+  </style>
+</head>
+<body>
+  <h1>제품 진품 여부 확인</h1>
+  <div class="result" id="result"></div>
+
+  <script>
+    const expectedURL = "https://kumhoschool.netlify.app/";
+    const currentURL = window.location.href;
+
+    const resultEl = document.getElementById("result");
+
+    if (currentURL === expectedURL || currentURL === expectedURL + "/") {
+      resultEl.innerHTML = `<p class="valid">✅ 이 제품은 진품입니다.</p>`;
+    } else {
+      resultEl.innerHTML = `<p class="invalid">❌ 이 제품은 진품이 아닙니다.</p>`;
+    }
+  </script>
+</body>
+</html>
